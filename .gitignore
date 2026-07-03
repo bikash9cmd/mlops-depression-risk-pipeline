@@ -1,0 +1,11 @@
+.env
+__pycache__/
+*.pyc
+*.pkl
+data/raw/*.csv
+data/processed/*.csv
+monitoring/evidently/reports/
+backups/
+logs/
+airflow_logs/
+.DS_Store
