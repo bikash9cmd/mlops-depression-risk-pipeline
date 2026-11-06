@@ -99,12 +99,25 @@ The Airflow DAG (`airflow/dags/depression_pipeline_dag.py`) runs daily:
 1. **extract_prediction_logs** - pulls the last day of served
    predictions out of MariaDB so the model can learn from real traffic.
 2. **preprocess_dataset** - cleans and merges with the base training set.
+   Rows outside the API's input bounds are dropped, and the target is
+   normalised to `0`/`1` whether it came from the survey (`0`/`1`) or
+   from logged predictions (`low_risk`/`high_risk`).
 3. **train_model** - fits a `GradientBoostingClassifier`, logs metrics
    to `model_registry`.
 4. **check_data_drift** - runs Evidently's `DataDriftPreset` against a
    stored reference sample; fails the DAG run if the check itself errors.
 5. **promote_model_if_better** - only swaps in the new model if its F1
    score beats the currently active one.
+
+## Running the tests
+
+```bash
+pip install -r requirements-dev.txt
+python -m pytest -q
+```
+
+The same suite runs on every push and pull request via
+`.github/workflows/tests.yml`.
 
 ## Monitoring
 
