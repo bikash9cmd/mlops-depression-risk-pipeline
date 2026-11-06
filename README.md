@@ -125,3 +125,7 @@ The Airflow DAG (`airflow/dags/depression_pipeline_dag.py`) runs daily:
 - The model file swapped in by `promote.py` is picked up by FastAPI on
   next restart; add a file-watcher or a `/reload` endpoint if you want
   hot-swapping without a restart.
+
+## License
+
+Released under the [MIT License](LICENSE).
