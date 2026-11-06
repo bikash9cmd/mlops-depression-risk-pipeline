@@ -1,5 +1,7 @@
 # MLOps Depression Risk Pipeline
 
+> **Tech stack:** Python · Apache Airflow · FastAPI · Redis · MariaDB · Docker Compose
+
 A multi-container MLOps stack for predicting depression risk from
 lifestyle/survey inputs, built as part of BCU CMP5366. The project
 covers the full lifecycle: scheduled retraining, a REST inference
